@@ -1,0 +1,84 @@
+body{
+    background-color: rgb(224, 222, 222);
+}
+.background{
+    background-color: red;
+    width: 1440px;
+    height: 300px;
+    background-image: url('../src/assets/Bitmap.jpg');
+    background-size: cover;
+    position: relative;
+}
+.todo-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:850px;
+    height:48px;
+    position: absolute;
+    left: 290px;
+    top: 65px;
+}
+.todo-header span{
+    font-size: 40px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 15px;
+    line-height: 40px;
+}
+.todo-box{
+    width: 510px;
+    position: absolute;
+    left: 460px;
+    top: 170px;
+}
+.task-input{
+    width: 440px;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+.sub-btn{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+}
+.app-li{
+    width: 443px;
+    height: 35px;
+    border-bottom: 1px solid rgb(224, 217, 217);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding-left: 14px;
+}
+.bottom-btns{
+    display: flex;
+    width:320px;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+.bottom-btns1{
+    display: flex;
+    justify-content: space-around;
+    width: 180px;
+}
+.bottom-btns button{
+    background-color: white;
+    border: none;
+    color: grey;
+}
+.bottom-btns button:hover{
+    color: blue;
+    cursor: pointer;
+}
+.app-li span{
+    color: grey;
+    font-size: 14px;
+}
