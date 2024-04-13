@@ -4,13 +4,13 @@ import './Todo.css'
 const Todo = ({inputValue,handleCheckboxClick,handleDelete}) => {
   return (
     <div className="todo-task-box" style={{display:"flex"}}>
+      <input type="checkbox" className='check-btn' onClick={handleCheckboxClick} />
         <li style={{
           listStyle: "none",
           color: inputValue.completed ? "grey" : "black",
           textDecoration: inputValue.completed ? "line-through" : null
         }}>
-        <div>
-        <input type="checkbox" className='check-btn' onClick={handleCheckboxClick} />
+        <div className='task'>
         {inputValue.task}
         </div>
         </li>
