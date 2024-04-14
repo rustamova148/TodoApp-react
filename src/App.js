@@ -143,8 +143,8 @@ const App = () => {
         {items.map((inputValue, id) => (
           <Todo
             inputValue={inputValue}
-            handleCheckboxClick={() => handleCheckboxClick(inputValue.id)}
-            handleDelete={() => handleDelete(inputValue.id)}
+            handleCheckboxClick={handleCheckboxClick}
+            handleDelete={handleDelete}
             key={id}
           />
         ))}
@@ -171,7 +171,6 @@ const App = () => {
   );
 };
 
-//? active completed-i isledende checkbox-da problem(yeni meselen clear complited-e click edende
-//? completed olanlar silinir amma onların check işarəsi digər yazılara keçir)
-//? App.css-de en sonda responsivlik hissede left:0 verdiyim halda todo-box yerin deyismir ve .background ve .space-e 100% width,100vh height verende mobilde de hemin ölçünü almali deyil?
 export default App;
+
+//? App.css-de en sonda responsivlik hissede left:0 verdiyim halda todo-box yerin deyismir ve .background ve .space-e 100% width,100vh height verende mobilde de hemin ölçünü almali deyil?

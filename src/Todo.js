@@ -4,7 +4,10 @@ import './Todo.css'
 const Todo = ({inputValue,handleCheckboxClick,handleDelete}) => {
   return (
     <div className="todo-task-box" style={{display:"flex"}}>
-      <input type="checkbox" className='check-btn' onClick={handleCheckboxClick} />
+      <input type="checkbox" className='check-btn' 
+      onChange={()=>handleCheckboxClick(inputValue.id)}
+      checked={inputValue.completed} 
+      />
         <li style={{
           listStyle: "none",
           color: inputValue.completed ? "grey" : "black",
@@ -14,7 +17,7 @@ const Todo = ({inputValue,handleCheckboxClick,handleDelete}) => {
         {inputValue.task}
         </div>
         </li>
-        <button onClick={handleDelete} className='delete-btn'>X</button>
+        <button onClick={()=>handleDelete(inputValue.id)} className='delete-btn'>X</button>
     </div>
   )
 }
