@@ -7,6 +7,7 @@ const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 const App = () => {
   const [mode,setMode]=useState(localStorage.getItem("mode"));
   const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
   const [inputValue, setInputValue] = useState({
     id: "",
     task: "",
@@ -18,7 +19,8 @@ const App = () => {
   useEffect(() => {
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storageTodos) {
-      setItems(storageTodos); //? localstorage-de qalir amma refresh edende gedir
+      setItems(storageTodos); 
+      setFilteredItems(storageTodos);
     }
     
     if(localStorage.getItem("mode") === null){
@@ -31,6 +33,7 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
+    setFilteredItems(items);
   }, [items]);
 
   const changeMode = () => {
@@ -85,23 +88,19 @@ const App = () => {
   };
 
   const handleDeletecompleted = () => {
-    setItems((items) =>
-      items.filter((inputValue) => inputValue.completed === false)
-    );
+  const filtered = items.filter((item) => !item.completed);
+  setItems(filtered);
+  setFilteredItems(filtered);
   };
 
   const handleAll = () => {
-    setItems((items) => items.map((inputValue) => inputValue));
+    setFilteredItems(items);
   };
   const handleActive = () => {
-    setItems((items) =>
-      items.filter((inputValue) => inputValue.completed === false)
-    );
+    setFilteredItems(items.filter((item) => !item.completed));
   };
   const handleCompleted = () => {
-    setItems((items) =>
-      items.filter((inputValue) => inputValue.completed === true)
-    );
+    setFilteredItems(items.filter((item) => item.completed));
   };
   return (
     <div>
@@ -138,33 +137,34 @@ const App = () => {
             placeholder="Create a new todo..."
             onChange={handleInputChange}
           />
-          {/* <button type="submit" className="sub-btn">+</button> */}
         </form>
-        {items.map((inputValue, id) => (
+        <div className="todos-cont">
+        {filteredItems.map((inputValue) => (
           <Todo
             inputValue={inputValue}
             handleCheckboxClick={handleCheckboxClick}
             handleDelete={handleDelete}
-            key={id}
+            key={inputValue.id}
           />
         ))}
         <li className="app-li">
-        <span>{items.length} items left</span>
+        <span>{items.filter((item) => !item.completed).length} items left</span>
         <div className="bottom-btns">
         <div className="bottom-btns1">
-        <button onClick={() => handleAll(inputValue.completed)}>All</button>
-        <button onClick={() => handleActive(inputValue.completed)}>
+        <button onClick={handleAll}>All</button>
+        <button onClick={handleActive}>
           Active
         </button>
-        <button onClick={() => handleCompleted(inputValue.completed)}>
+        <button onClick={handleCompleted}>
           Completed
         </button>
         </div>
-        <button onClick={() => handleDeletecompleted(inputValue.completed)}>
+        <button onClick={handleDeletecompleted}>
           Clear Completed
         </button>
         </div>
         </li>
+        </div>
       </div>
       </div>
     </div>
@@ -172,5 +172,3 @@ const App = () => {
 };
 
 export default App;
-
-//? App.css-de en sonda responsivlik hissede left:0 verdiyim halda todo-box yerin deyismir ve .background ve .space-e 100% width,100vh height verende mobilde de hemin ölçünü almali deyil?
