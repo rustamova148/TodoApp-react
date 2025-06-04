@@ -139,6 +139,9 @@ form{
    .todo-header{
     width: 350px;
    }
+   .todo-task-box{
+    width: 364px !important;
+   }
    .light .task-input,
    .dark .task-input{
     width: 350px;
@@ -152,6 +155,9 @@ form{
    .todo-header{
     width: 330px;
    }
+   .todo-task-box{
+    width: 344px !important;
+   }
    .light .task-input,
    .dark .task-input{
     width: 330px;
@@ -164,6 +170,9 @@ form{
 @media only screen and (max-width: 361px) {
    .todo-header{
     width: 300px;
+   }
+   .todo-task-box{
+    width: 314px !important;
    }
    .light .task-input,
    .dark .task-input{

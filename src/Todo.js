@@ -4,7 +4,7 @@ import './Todo.css'
 const Todo = ({inputValue,handleCheckboxClick,handleDelete}) => {
   return (
     <div className="todo-task-box" style={{display:"flex"}}>
-      <input type="checkbox" className='check-btn' 
+      <input type="checkbox" className='check-btn' name="check"
       onChange={()=>handleCheckboxClick(inputValue.id)}
       checked={inputValue.completed} 
       />
